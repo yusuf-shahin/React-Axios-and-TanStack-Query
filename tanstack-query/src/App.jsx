@@ -21,17 +21,17 @@ function App() {
                 <Link to='/'>Home</Link>
               </li>
               <li>
-                <Link to='/posts'>Traditional Posts</Link>
+                <Link to='/post'>Traditional Posts</Link>
               </li>
               <li>
-                <Link to='/rq-posts'>RQ Posts</Link>
+                <Link to='/rq-post'>RQ Posts</Link>
               </li>
             </ul>
           </nav>
           <Routes>
             <Route exact path='/' element={<Home />} />
-            <Route exact path='/posts' element={<PostsTraditional />} />
-            <Route exact path='/rq-posts' element={<PostsRQ />} />
+            <Route exact path='/post' element={<TraditionalPost />} />
+            <Route exact path='/rq-post' element={<PostRQ />} />
             {/* <Route exact path='/rq-posts/:postId' element={<PostDetailsRQ />} /> */}
             {/* <Route
               exact

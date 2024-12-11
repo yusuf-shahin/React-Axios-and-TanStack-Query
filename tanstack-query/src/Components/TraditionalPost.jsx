@@ -1,7 +1,7 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
 
-const TraditionalFetch = () => {
+const TraditionalPost = () => {
   const [posts, setPosts] = useState([])
   const [isError, setIsError] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -12,7 +12,8 @@ const TraditionalFetch = () => {
     // setPost(data)
     // console.log(data)
     try {
-      const response = await axios.get("https://fakestoreapi.com/products")
+      const response = await axios.get("http://localhost:9000/abc")
+      // console.log(response)
       setPosts(response.data)
     } catch (error) {
       setIsError(true)
@@ -44,4 +45,4 @@ const TraditionalFetch = () => {
   )
 }
 
-export default TraditionalFetch
+export default TraditionalPost
