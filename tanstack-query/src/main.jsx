@@ -5,6 +5,7 @@ import App from "./App.jsx"
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query"
 
 const queryClient = new QueryClient()
+console.log(queryClient)
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

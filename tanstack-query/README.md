@@ -238,9 +238,9 @@ const PostRQ = () => {
   })
   // console.log(result)
 
-  //? here is the result is going to be a object , which has all information , in the particular things of query
+  // here is the result is going to be a object , which has all information , in the particular things of query
 
-  //? so we can distructure it .
+  // so we can distructure it .
 
   const { data, isLoading, isError, error } = result
 
