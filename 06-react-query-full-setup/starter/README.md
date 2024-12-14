@@ -104,7 +104,7 @@ const fetchTasks = async () => {
     const response = await customFetch.get("/")
     console.log(response.data)
   } catch (error) {
-    ;+console.error(error)
+    console.error(error)
   }
 }
 
@@ -130,7 +130,7 @@ npm i @tanstack/react-query
 
 #### Setup React Query
 
-main.jsx
+**main.jsx**
 
 ```js
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
@@ -145,14 +145,16 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 #### First Query
 
-Items.jsx
+**Items.jsx**
 
 ```js
 import { useQuery } from "@tanstack/react-query"
 
+// useQuery function basically return a object
 const result = useQuery({
   queryKey: ["tasks"],
   queryFn: () => customFetch.get("/"),
+  // customFetch come from util.js
 })
 console.log(result)
 ```
@@ -164,6 +166,57 @@ The unique key you provide is used internally for refetching, caching, and shari
 - Query Function
 
 A query function can be literally any function that returns a promise. The promise that is returned should either resolve the data or throw an error.
+
+#### Render the data :
+
+**Items.jsx**
+
+```js
+import { useQuery } from "@tanstack/react-query"
+import SingleItem from "./SingleItem"
+import customFetch from "./utils"
+const Items = () => {
+  const { isLoading, data } = useQuery({
+    queryKey: ["tasks"],
+    queryFn: () => customFetch.get("/"),
+  })
+  // console.log(result)
+
+  if (isLoading) {
+    return <p style={{ marginTop: "1rem" }}>Loading...</p>
+  }
+
+  return (
+    <div className='items'>
+      {data?.data?.taskList?.map((item) => {
+        return <SingleItem key={item.id} item={item} />
+      })}
+    </div>
+  )
+}
+export default Items
+```
+
+**same thing on different way**
+
+```js
+const { isLoading, data } = useQuery({
+  queryKey: ["tasks"],
+  // turn it into async
+  queryFn: async () => {
+    const { data } = await customFetch.get("/")
+    return data
+  },
+})
+
+return (
+  <div className='items'>
+    {data?.taskList?.map((item) => {
+      return <SingleItem key={item.id} item={item} />
+    })}
+  </div>
+)
+```
 
 #### Error Handling
 
@@ -208,7 +261,9 @@ Test API endpoints directly in VS CODE
 
 #### Create Task
 
-Form.jsx
+- when we creating, editing basically updating the resource or deleting we want to use **useMutation** hook.
+
+**Form.jsx**
 
 ```js
 const { mutate: createTask, isLoading } = useMutation({
