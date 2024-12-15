@@ -4,7 +4,7 @@
 
 Open server directory.
 
-- run "npm install" and "npm start"
+- run **npm install** and **npm start**
 
 #### Node Course
 
@@ -22,7 +22,7 @@ Explore files and folders
 #### Custom Axios Instance
 
 Create utils.js and setup custom axios instance with
-following base url:'http://localhost:9000/api/tasks'
+following base url:**localhost:9000/api/tasks**
 
 #### HTTP Methods
 
