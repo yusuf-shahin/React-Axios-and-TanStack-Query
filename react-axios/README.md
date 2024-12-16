@@ -4,6 +4,15 @@
 
 [Axios Docs](https://axios-http.com/docs/intro)
 
+#### Setup
+
+- we get everything in **app.js**
+
+- Our main code base is **examples repo**
+- we practice our code in **examples repo**
+- **final repo** is not our concern
+- **final repo** basically our finish project
+
 #### Install
 
 ```sh
@@ -14,7 +23,7 @@ npm install axios
 <script src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'></script>
 ```
 
-#### First Request
+### First Request
 
 - import axios
 
@@ -72,9 +81,10 @@ const fetchData = async () => {
 }
 ```
 
-- in axios we get everything of data
+- basically **axios** give us a huge object , where our data is store in our **data** property .
+- so, in axios we get everything of data .
 
-#### Headers (./examples/2-headers)
+### Headers (./examples/2-headers)
 
 - second argument
 
@@ -102,13 +112,13 @@ const Headers = () => {
 ```
 
 - in console we get that :-
-  [!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.18.46%20PM.jpeg)
+- [!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.18.46%20PM.jpeg)
 
 - if we click the config button we can find
-  [!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.10.39%20PM.jpeg)
+- [!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.10.39%20PM.jpeg)
 
 - inside config , we find our headers . Inside headers we get the those things.
-  [!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.13.21%20PM.jpeg)
+- [!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.13.21%20PM.jpeg)
 
 So we want to get dadJoke from API . We can maintain this process :-
 
@@ -209,7 +219,6 @@ try {
 #### Global Defaults
 
 ```js
-
 axios.defaults.headers["Accept"] = "application/json"
 
 axios.defaults.baseURL = "https://api.example.com"

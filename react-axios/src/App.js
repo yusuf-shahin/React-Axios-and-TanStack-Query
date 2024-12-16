@@ -7,8 +7,8 @@ function App() {
     <main>
       <Title />
       {/* <Setup /> */}
-      {/* <Headers /> */}
-      <Post />
+      <Headers />
+      {/* <Post /> */}
     </main>
   )
 }
