@@ -112,13 +112,13 @@ const Headers = () => {
 ```
 
 - in console we get that :-
-- [!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.18.46%20PM.jpeg)
+  ![Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.18.46%20PM.jpeg)
 
 - if we click the config button we can find
-- [!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.10.39%20PM.jpeg)
+  ![Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.10.39%20PM.jpeg)
 
 - inside config , we find our headers . Inside headers we get the those things.
-- [!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.13.21%20PM.jpeg)
+  ![!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.13.21%20PM.jpeg)
 
 So we want to get dadJoke from API . We can maintain this process :-
 
