@@ -4,7 +4,7 @@ import customFetch from "./utils"
 import axios from "axios"
 const Items = () => {
   const result = useQuery({
-    queryKey: ["tasks"],
+    queryKey: ["task"],
     queryFn: async () => {
       // const { data } = await customFetch.get("/")
       const { data } = await axios("http://localhost:9000/api/tasks")

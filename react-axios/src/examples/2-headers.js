@@ -16,14 +16,22 @@ const Headers = () => {
       //* main axios
       // const response = await axios(url, {
       //   headers: {
-      //     // Accept: "application/json",
-      //     Accept: "text/plain",
+      //     Accept: "application/json",
       //   },
       // })
       // console.log(response.data)
-
       // console.log(response.data.joke)
       // setJoke(data.joke)
+
+      //! another approach
+      // const {
+      //   data: { joke },
+      // } = await axios(url, {
+      //   headers: {
+      //     Accept: "application/json",
+      //   },
+      // })
+      // setJoke(joke)
     } catch (error) {
       console.log(error.response)
     }

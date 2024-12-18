@@ -86,7 +86,9 @@ const fetchData = async () => {
 
 ### Headers (./examples/2-headers)
 
-- second argument
+- Adding additional info to our request.
+
+- passing second argument
 
 - axios.get(url,{})
 
@@ -111,6 +113,11 @@ const Headers = () => {
 }
 ```
 
+- **here we dont get data as json formet**
+- here if we chack our **config** file and add additional argument through this process.
+
+#### Process
+
 - in console we get that :-
   ![Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.18.46%20PM.jpeg)
 
@@ -120,7 +127,14 @@ const Headers = () => {
 - inside config , we find our headers . Inside headers we get the those things.
   ![!Relative](./Image/WhatsApp%20Image%202024-11-08%20at%2012.13.21%20PM.jpeg)
 
-So we want to get dadJoke from API . We can maintain this process :-
+#### Now If we chack our header inside the main object
+
+![Relative](./Image/WhatsApp%20Image%202024-12-16%20at%203.46.51%20PM.jpeg)
+
+- we dont find `Accept: "application/json",`
+- so we add extra additional info in our **headers** using second peremeter
+
+**So we want to get dadJoke from API . We can maintain this process :-**
 
 ```jsx
 const Headers = () => {
@@ -149,12 +163,12 @@ const Headers = () => {
 **same things in different approach**
 
 ```jsx
-      const { data } = await axios(url, {
+      const { data : { joke } } = await axios(url, {
         headers: {
           Accept: "application/json",
         },
       })
-      setJoke(data.joke)
+      setJoke(joke)
     } catch (error) {
       console.log(error.response)
     }
@@ -217,6 +231,7 @@ try {
 ```
 
 #### Global Defaults
+- Avoid this...
 
 ```js
 axios.defaults.headers["Accept"] = "application/json"
