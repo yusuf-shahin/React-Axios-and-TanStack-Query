@@ -18,7 +18,7 @@ const Form = () => {
       toast.error(error.response.data.msg)
     },
     onSuccess: () => {
-      queryClint.invalidateQueries({ queryKey: ["task"] })
+      queryClint.invalidateQueries({ queryKey: ["tasks"] })
       toast.success("task added")
       setNewItemName("")
     },
