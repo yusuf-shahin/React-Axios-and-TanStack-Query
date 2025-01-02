@@ -2,13 +2,16 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { useState } from "react"
 import customFetch from "./utils"
 import { toast } from "react-toastify"
+import axios from "axios"
 
 const Form = () => {
   const [newItemName, setNewItemName] = useState("")
   const queryClint = useQueryClient()
 
   const { mutate: createTask, isLoading } = useMutation({
-    mutationFn: (taskTitle) => customFetch.post("/", { title: taskTitle }),
+    // mutationFn: (taskTitle) => customFetch.post("/", { title: taskTitle }),
+    mutationFn: (taskTitle) =>
+      axios.post("http://localhost:9000/api/tasks", { title: taskTitle }),
     onError: (error) => {
       // console.log(error)
       // console.log(error.response)
