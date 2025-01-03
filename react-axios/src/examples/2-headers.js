@@ -10,15 +10,17 @@ const Headers = () => {
   const fetchDadJoke = async () => {
     try {
       //* practice axios
-      const response = await axios(url)
-      console.log(response)
+      // const response = await axios(url)
+      // console.log(response)
 
       //* main axios
-      // const response = await axios(url, {
-      //   headers: {
-      //     Accept: "application/json",
-      //   },
-      // })
+      const response = await axios(url, {
+        headers: {
+          Accept: "application/json",
+        },
+      })
+      console.log(response)
+
       // console.log(response.data)
       // console.log(response.data.joke)
       // setJoke(data.joke)
@@ -31,7 +33,7 @@ const Headers = () => {
       //     Accept: "application/json",
       //   },
       // })
-      // setJoke(joke)
+      // setJoke(response)
     } catch (error) {
       console.log(error.response)
     }
