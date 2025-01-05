@@ -10,7 +10,7 @@ function App() {
     <main>
       <Title />
       <Setup />
-      <Headers />
+      {/* <Headers /> */}
       {/* <Post /> */}
       {/* <CustomInstance /> */}
     </main>

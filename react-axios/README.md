@@ -66,6 +66,9 @@ export default FirstRequest
 
 - using fetch its only show us data
 
+**in browser**
+![Relative](./Image/only-fatch.png)
+
 ```js
 import axios from "axios"
 
@@ -81,8 +84,11 @@ const fetchData = async () => {
 }
 ```
 
-- basically **axios** give us a huge object , where our data is store in our **data** property .
-- so, in axios we get everything of data .
+**in browser**
+![Relative](./Image/WhatsApp%20Image%202025-01-05%20at%201.08.22%20AM.jpeg)
+
+- **basically **axios** give us a huge object , where our data is store in our **data** property .**
+- **so, in axios we get everything of data .**
 
 ### Headers (./examples/2-headers)
 
@@ -231,6 +237,7 @@ try {
 ```
 
 #### Global Defaults
+
 - Avoid this...
 
 ```js
