@@ -9,6 +9,17 @@ const Headers = () => {
 
   const fetchDadJoke = async () => {
     try {
+      //@ fetch API
+
+      // const resp = await fetch(url, {
+      //   headers: {
+      //     Accept: "application/json",
+      //   },
+      // })
+      // const data = await resp.json()
+      // console.log(data)
+      // setJoke(data.joke)
+
       //* practice axios
       // const response = await axios(url)
       // console.log(response)
@@ -23,7 +34,7 @@ const Headers = () => {
 
       // console.log(response.data)
       // console.log(response.data.joke)
-      // setJoke(data.joke)
+      setJoke(response.data.joke)
 
       //! another approach
       // const {

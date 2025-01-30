@@ -1,4 +1,4 @@
-## Steps
+## React Tanstack Query
 
 #### Server
 
@@ -81,6 +81,21 @@ The unique key you provide is used internally for refetching, caching, and shari
 - Query Function
 
 A query function can be literally any function that returns a promise. The promise that is returned should either resolve the data or throw an error.
+
+### What happen if we dont pass any query key ?
+
+```js
+import { useQuery } from "@tanstack/react-query"
+
+// useQuery function basically return a object
+const result = useQuery({
+  queryKey: ["tasks"],
+})
+console.log(result)
+```
+
+**in console**
+[!Relative](./public/WhatsApp%20Image%202025-01-28%20at%204.16.55%20PM.jpeg)
 
 ### Render the data :
 
@@ -180,6 +195,47 @@ Test API endpoints directly in VS CODE
 
 **Form.jsx**
 
+- useMutation Hook :
+
+```js
+import { useMutation } from "@tanstack/react-query"
+import { toast } from "react-toastify"
+import axios from "axios"
+
+const Form = () => {
+  const [newItemName, setNewItemName] = useState("")
+  const queryClint = useQueryClient()
+
+  const result = useMutation({
+    mutationFn: (taskTitle) =>
+      axios.post("http://localhost:9000/api/tasks", { title: taskTitle }),
+  })
+  console.log(result)
+}
+```
+
+- in console
+
+```js
+context: undefined
+data: undefined
+error: null
+failureCount: 0
+failureReason: null
+isError: false
+isIdle: true
+isLoading: false
+isPaused: false
+isSuccess: false
+mutate: (variables, mutateOptions) => {…}
+mutateAsync: ƒ ()
+reset: ƒ ()
+status: "idle"
+variables :undefined
+```
+
+- here we get `mutate` is a function we set equel to `mutationFn` .
+
 ```js
 const { mutate: createTask, isLoading } = useMutation({
   mutationFn: (taskTitle) => customFetch.post("/", { title: taskTitle }),
@@ -200,9 +256,13 @@ const { mutate: createTask, isLoading } = useMutation({
   mutationFn: (taskTitle) => customFetch.post("/", { title: taskTitle }),
   onSuccess: () => {
     // do something
+    // its help us to refatching the data from server
+    queryClint.invalidateQueries({ queryKey: ["tasks"] })
+    toast.success("task added")
+    setNewItemName("")
   },
   onError: () => {
-    // do something
+    toast.error(error.response.data.msg)
   },
 })
 ```

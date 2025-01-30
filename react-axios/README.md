@@ -34,7 +34,7 @@ npm install axios
 
 - default get axios(url)
 
-- returns a promise
+- returns a promise (which is object)
 - response data located in data property
 - error in error.response
 
@@ -87,8 +87,9 @@ const fetchData = async () => {
 **in browser**
 ![Relative](./Image/WhatsApp%20Image%202025-01-05%20at%201.08.22%20AM.jpeg)
 
-- **basically **axios** give us a huge object , where our data is store in our **data** property .**
-- **so, in axios we get everything of data .**
+- **basically **axios** give us a huge object**
+- **Where we can ovserve our all fetch property**
+- **our data is store in our **data** property .**
 
 ### Headers (./examples/2-headers)
 

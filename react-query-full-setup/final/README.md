@@ -1,28 +1,9 @@
-## Steps
-
-#### Server
-
-Open server directory.
-
-- run "npm install" and "npm start"
-
-#### Node Course
-
-[Node Tutorial and Projects Course](https://www.udemy.com/course/nodejs-tutorial-and-projects-course/?referralCode=E94792BEAE9ADD204BC7)
-
-#### Starter
-
-- run "npm install" and "npm run dev"
-- Grocery Bud structure
-
-#### Explore Setup
-
-Explore files and folders
+### React Tanstack Query Project
 
 #### Custom Axios Instance
 
 Create utils.js and setup custom axios instance with
-following base url:'http://localhost:5000/api/tasks'
+following base url:'http://localhost:9000/api/tasks'
 
 #### HTTP Methods
 
@@ -35,23 +16,23 @@ GET: This HTTP method is used to retrieve data from a server. When a client send
 ```js
 // HTTP GET example
 try {
-  const response = await axios.get('/api/data');
-  console.log(response.data);
+  const response = await axios.get("/api/data")
+  console.log(response.data)
 } catch (error) {
-  console.error(error);
+  console.error(error)
 }
 ```
 
 ```js
 // HTTP GET example
 axios
-  .get('/api/data')
+  .get("/api/data")
   .then((response) => {
-    console.log(response.data);
+    console.log(response.data)
   })
   .catch((error) => {
-    console.error(error);
-  });
+    console.error(error)
+  })
 ```
 
 POST: The POST method is used to send data to a server to create or update a resource. When a client sends a POST request to a server, the server will process the request and create a new resource or update an existing one. This method is commonly used in web forms, where users enter information that is then sent to a server for processing.
@@ -59,10 +40,10 @@ POST: The POST method is used to send data to a server to create or update a res
 ```js
 // HTTP POST example
 try {
-  const response = await axios.post('/api/data', { name: 'John', age: 30 });
-  console.log(response.data);
+  const response = await axios.post("/api/data", { name: "John", age: 30 })
+  console.log(response.data)
 } catch (error) {
-  console.error(error);
+  console.error(error)
 }
 ```
 
@@ -71,10 +52,10 @@ PATCH: This method is similar to the POST method, but it is used to update only 
 ```js
 // HTTP PATCH example
 try {
-  const response = await axios.patch('/api/data/1', { age: 31 });
-  console.log(response.data);
+  const response = await axios.patch("/api/data/1", { age: 31 })
+  console.log(response.data)
 } catch (error) {
-  console.error(error);
+  console.error(error)
 }
 ```
 
@@ -83,10 +64,10 @@ DELETE: The DELETE method is used to remove a resource from a server. When a cli
 ```js
 // HTTP DELETE example
 try {
-  const response = await axios.delete('/api/data/1');
-  console.log(response.data);
+  const response = await axios.delete("/api/data/1")
+  console.log(response.data)
 } catch (error) {
-  console.error(error);
+  console.error(error)
 }
 ```
 
@@ -101,16 +82,16 @@ CRUD stands for Create, Read, Update, and Delete, which are the basic operations
 ```js
 const fetchTasks = async () => {
   try {
-    const response = await customFetch.get('/');
-    console.log(response.data);
+    const response = await customFetch.get("/")
+    console.log(response.data)
   } catch (error) {
-    +console.error(error);
+    ;+console.error(error)
   }
-};
+}
 
 useEffect(() => {
-  fetchTasks();
-}, []);
+  fetchTasks()
+}, [])
 ```
 
 #### React Query
@@ -133,14 +114,14 @@ npm i @tanstack/react-query
 main.jsx
 
 ```js
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-const queryClient = new QueryClient();
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+const queryClient = new QueryClient()
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
     <App />
   </QueryClientProvider>
-);
+)
 ```
 
 #### First Query
@@ -148,13 +129,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 Items.jsx
 
 ```js
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query"
 
 const result = useQuery({
-  queryKey: ['tasks'],
-  queryFn: () => customFetch.get('/'),
-});
-console.log(result);
+  queryKey: ["tasks"],
+  queryFn: () => customFetch.get("/"),
+})
+console.log(result)
 ```
 
 - Query Key
@@ -170,32 +151,32 @@ A query function can be literally any function that returns a promise. The promi
 ```js
 const Items = () => {
   const { isLoading, data, error, isError } = useQuery({
-    queryKey: ['tasks'],
+    queryKey: ["tasks"],
     queryFn: async () => {
-      const { data } = await customFetch.get('/something');
-      return data;
+      const { data } = await customFetch.get("/something")
+      return data
     },
-  });
+  })
 
   if (isLoading) {
-    return <p style={{ marginTop: '1rem ' }}>Loading...</p>;
+    return <p style={{ marginTop: "1rem " }}>Loading...</p>
   }
 
   // if (isError) {
   //   return <p style={{ marginTop: '1rem ' }}>there was an error...</p>;
   // }
   if (error) {
-    return <p style={{ marginTop: '1rem ' }}>{error.message}</p>;
+    return <p style={{ marginTop: "1rem " }}>{error.message}</p>
   }
   return (
     <div className='items'>
       {data.taskList.map((item) => {
-        return <SingleItem key={item.id} item={item} />;
+        return <SingleItem key={item.id} item={item} />
       })}
     </div>
-  );
-};
-export default Items;
+  )
+}
+export default Items
 ```
 
 #### Thunder Client Extension
@@ -212,13 +193,13 @@ Form.jsx
 
 ```js
 const { mutate: createTask, isLoading } = useMutation({
-  mutationFn: (taskTitle) => customFetch.post('/', { title: taskTitle }),
-});
+  mutationFn: (taskTitle) => customFetch.post("/", { title: taskTitle }),
+})
 
 const handleSubmit = (e) => {
-  e.preventDefault();
-  createTask(newItemName);
-};
+  e.preventDefault()
+  createTask(newItemName)
+}
 ```
 
 #### useMutation Helper Options
@@ -227,14 +208,14 @@ useMutation comes with some helper options that allow quick and easy side-effect
 
 ```js
 const { mutate: createTask, isLoading } = useMutation({
-  mutationFn: (taskTitle) => customFetch.post('/', { title: taskTitle }),
+  mutationFn: (taskTitle) => customFetch.post("/", { title: taskTitle }),
   onSuccess: () => {
     // do something
   },
   onError: () => {
     // do something
   },
-});
+})
 ```
 
 #### Edit Task (Challenge)

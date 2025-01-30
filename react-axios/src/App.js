@@ -9,8 +9,8 @@ function App() {
   return (
     <main>
       <Title />
-      <Setup />
-      {/* <Headers /> */}
+      {/* <Setup /> */}
+      <Headers />
       {/* <Post /> */}
       {/* <CustomInstance /> */}
     </main>
